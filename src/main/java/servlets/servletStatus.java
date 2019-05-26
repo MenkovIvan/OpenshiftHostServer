@@ -1,8 +1,5 @@
 package servlets;
 
-import filebase.PlayerSearch;
-import filebase.ReadFile;
-
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +16,7 @@ public class servletStatus extends HttpServlet {
         ServletOutputStream os = resp.getOutputStream();
         String login = req.getParameter("loginnew");
         System.out.println("login_new: "+login);
-        ReadFile rf = new ReadFile();
+        /*ReadFile rf = new ReadFile();
         ArrayList players = new ArrayList();
         PlayerSearch playerSearch = new PlayerSearch();
         try {
@@ -31,6 +28,6 @@ public class servletStatus extends HttpServlet {
         if (id==-1){
             os.print("yes");
         }
-        else os.print("no");
+        else os.print("no");*/
     }
 }

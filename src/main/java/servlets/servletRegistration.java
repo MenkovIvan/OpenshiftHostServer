@@ -1,7 +1,9 @@
 package servlets;
 
-import filebase.PlayerSearch;
-import filebase.ReadFile;
+import database.AddPlayer;
+import database.CheckLogin;
+import database.CheckPlayer;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -21,17 +23,22 @@ public class servletRegistration extends HttpServlet {
         System.out.println("login: "+login);
         String password = req.getParameter("password");
         System.out.println("password: "+password);
-        ReadFile rf = new ReadFile();
-        ArrayList players = new ArrayList();
-        PlayerSearch playerSearch = new PlayerSearch();
+
+        int id = 0;
         try {
-            rf.read(players);
-        } catch (IOException e1) {
-            e1.printStackTrace();
+            id = CheckLogin.main(login);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        int id = playerSearch.checkLogin(players,login);
-        if (id !=-1)
-            rf.input(id,login,password);
+        if (id !=-1) {
+            try {
+                AddPlayer.main(login, password);
+                id = CheckPlayer.main(login, password);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         os.print(id);
 
     }

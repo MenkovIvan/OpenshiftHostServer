@@ -1,7 +1,7 @@
 package servlets;
 
-import filebase.PlayerSearch;
-import filebase.ReadFile;
+import database.CheckPlayer;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -31,15 +31,21 @@ public class servletEntry extends javax.servlet.http.HttpServlet{
             System.out.println("login: "+login);
             String password = req.getParameter("password");
             System.out.println("password: "+password);
-            ReadFile rf = new ReadFile();
-            ArrayList players = new ArrayList();
+
+            int id = 0;
             try {
-                rf.read(players);
-            } catch (IOException e1) {
-                e1.printStackTrace();
+                id = CheckPlayer.main(login, password);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            PlayerSearch playerSearch = new PlayerSearch();
-            int id = playerSearch.checkPlayer(players,login,password);
+            /*if (id<0){
+                System.out.println("Not found player.Player. Try again");
+            }
+            else{
+                System.out.println("player id: "+id);
+            }*/
+
+
             resp.getWriter().print("<br> No such id");
             os.print(id);
         }
