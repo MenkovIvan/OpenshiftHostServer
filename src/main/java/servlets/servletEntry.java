@@ -1,21 +1,17 @@
 package servlets;
 
-import database.CheckPlayer;
+import database.CheckInformation;
+import database.UpdateInformation;
 
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
 
-@WebServlet("/api/login")
-public class servletEntry extends javax.servlet.http.HttpServlet{
+public class servletEntry extends HttpServlet {
         public void init(ServletConfig servletConfig) {
             try {
                 super.init(servletConfig);
@@ -34,19 +30,24 @@ public class servletEntry extends javax.servlet.http.HttpServlet{
 
             int id = 0;
             try {
-                id = CheckPlayer.main(login, password);
+                id = CheckInformation.checkPlayer(login, password);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            /*if (id<0){
+            if (id<0){
                 System.out.println("Not found player.Player. Try again");
             }
             else{
                 System.out.println("player id: "+id);
-            }*/
-
-
-            resp.getWriter().print("<br> No such id");
+            }
+            try {
+                UpdateInformation.updateOnline(id, 1);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //resp.setContentType(String.valueOf(id));
             os.print(id);
         }
+
+
 }
