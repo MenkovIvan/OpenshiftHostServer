@@ -26,9 +26,11 @@ public class servletInviteResult extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
         String login = req.getParameter("login");
-        System.out.println("login: " + login);
+        System.out.println("servletInviteResult - start");
+        //System.out.println("  prinyl login: " + login);
         String result = req.getParameter("result");
-        System.out.println("result: " + result);
+        //System.out.println("  prinyl result: " + result);
+
         try {
 
             int who_id = CheckInformation.searchWhoInvite(CheckInformation.nameToId(login));
@@ -52,5 +54,6 @@ public class servletInviteResult extends HttpServlet {
             e.printStackTrace();
         }
         os.print("0");
+        System.out.println("servletInviteResult - end");
     }
 }

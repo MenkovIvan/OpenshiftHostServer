@@ -13,7 +13,7 @@ public class UpdateInformation {
 
         int rowCount = statement.executeUpdate(sql);
 
-        System.out.println("update online = " + rowCount + " from " + id);
+        //System.out.println("update online = " + rowCount + " from " + id);
 
     }
 
@@ -27,7 +27,7 @@ public class UpdateInformation {
 
         int rowCount = statement.executeUpdate(sql);
 
-        System.out.println("updateMe_Invite = " + rowCount + " from " + invite);
+        //System.out.println("updateMe_Invite = " + rowCount + " from " + invite);
 
     }
 
@@ -41,7 +41,7 @@ public class UpdateInformation {
 
         int rowCount = statement.executeUpdate(sql);
 
-        System.out.println("updateMe_Invite = " + rowCount + " from " + mylogin);
+        //System.out.println("updateMe_Invite = " + rowCount + " from " + mylogin);
 
     }
 
@@ -51,11 +51,11 @@ public class UpdateInformation {
 
         Statement statement = connection.createStatement();
 
-        String sql = "UPDATE player SET play=" + play + " WHERE login=" + login;
+        String sql = "UPDATE player SET play=" + play + " WHERE login='" + login + "'";
 
         int rowCount = statement.executeUpdate(sql);
 
-        System.out.println("updatePlay = " + rowCount + " from " + login);
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
 
     }
 }

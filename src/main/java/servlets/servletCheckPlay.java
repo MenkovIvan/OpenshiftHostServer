@@ -26,7 +26,7 @@ public class servletCheckPlay extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
         String login = req.getParameter("login");
-        System.out.println("login: " + login);
+        //System.out.println("login: " + login);
 
         //esli u igroka me_invite == 0 togda uznaem s kem igraem i check play u oboix
 

@@ -26,7 +26,7 @@ public class servletPlay extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
         String login = req.getParameter("login");
-        System.out.println("login: " + login);
+        System.out.println("play - login: " + login);
 
         try {
             UpdateInformation.updatePlay(login, 1);

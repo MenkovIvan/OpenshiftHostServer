@@ -26,17 +26,22 @@ public class servletCheckInvite extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
         String login = req.getParameter("login");
-        System.out.println("login: " + login);
+        System.out.println("servletCheckInvite start");
+        System.out.println("  prinyl login: " + login);
         try {
             int id = CheckInformation.getMeInvite(CheckInformation.nameToId(login));
 
             if (id > 0 && CheckInformation.getIInvite(CheckInformation.nameToId(login))==-1 && CheckInformation.getMeInvite(id) == -1 ){
-                os.print(CheckInformation.idToName(id));
+                String temp = CheckInformation.idToName(id);
+                os.print(temp);
+                System.out.println("  res = " + temp);
             } else {
                 os.print("0");
+                System.out.println("  res =  0");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("servletCheckInvite end");
     }
 }

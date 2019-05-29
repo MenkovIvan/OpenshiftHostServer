@@ -26,9 +26,10 @@ public class servletInvite extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
         int id = Integer.parseInt(req.getParameter("id"));
-        System.out.println("id: " + id);
+        System.out.println("servletInvite start");
+        System.out.println("  prinyl id: " + id);
         String whoInvite = req.getParameter("whoinvite");
-        System.out.println("who invite: " + whoInvite);
+        System.out.println("  prinyl whoinvite: " + whoInvite);
         try {
             System.out.println(CheckInformation.checkMeInvite(whoInvite));
             System.out.println(CheckInformation.checkMeInvite(CheckInformation.idToName(id)));
@@ -36,16 +37,18 @@ public class servletInvite extends HttpServlet {
 
                 UpdateInformation.updateMe_Invite(id, whoInvite);
                 UpdateInformation.updateI_Invite(CheckInformation.idToName(id), CheckInformation.nameToId(whoInvite));
-
+                System.out.println("  res = 1");
                 os.print(1);
 
             }else {
+                System.out.println("  res =0");
                 os.print(0);
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("servletInvite end");
     }
 }
 
