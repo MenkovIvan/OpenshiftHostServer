@@ -66,7 +66,7 @@ public class CheckInformation {
 
         if (rs.next()) {
 
-            System.out.println("Result set = " + rs.getInt("id"));
+            System.out.println("Check online = " + rs.getInt("id") + " return true");
 
             return true;
 
@@ -106,32 +106,13 @@ public class CheckInformation {
 
         if (rs.next()) {
 
-            System.out.println("Result set = " + rs.getInt("id"));
+            System.out.println("checkmeInvite = " + rs.getInt("id") + " return 1");
 
             return 1;
 
         } else return 0;
     }
 
-
-    public static int checkWhoInvite(String searchLogin) throws SQLException, ClassNotFoundException {
-
-        Connection connection = ConnectionMySQL.getMySQLConnection();
-
-        Statement statement = connection.createStatement();
-
-        String sql = "SELECT me_invite FROM player WHERE login='" + searchLogin + "'";
-
-        ResultSet rs = statement.executeQuery(sql);
-
-        if (rs.next()) {
-
-            System.out.println("Result set = " + rs.getInt("me_invite"));
-
-            return rs.getInt("me_invite");
-
-        } else return 0;
-    }
 
     public static int searchWhoInvite(int id) throws SQLException, ClassNotFoundException {
 
@@ -145,7 +126,7 @@ public class CheckInformation {
 
         if (rs.next()) {
 
-            System.out.println("Result set = " + rs.getInt("id"));
+            System.out.println("searchW = " + rs.getInt("id"));
 
             return rs.getInt("id");
 
@@ -164,7 +145,7 @@ public class CheckInformation {
 
         if (rs.next()) {
 
-            System.out.println("Result set = " + rs.getInt("me_invite"));
+            System.out.println("getMeInvite = " + rs.getInt("me_invite"));
 
             return rs.getInt("me_invite");
 
@@ -183,7 +164,7 @@ public class CheckInformation {
 
         if (rs.next()) {
 
-            System.out.println("Result set = " + rs.getInt("i_invite"));
+            System.out.println("getIInvite = " + rs.getInt("i_invite"));
 
             return rs.getInt("i_invite");
 
@@ -202,7 +183,7 @@ public class CheckInformation {
 
         if (rs.next()) {
 
-            System.out.println("Result set = " + rs.getInt("play"));
+            System.out.println("getPlay = " + rs.getInt("play"));
 
             return rs.getInt("play");
 

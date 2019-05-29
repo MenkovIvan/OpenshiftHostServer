@@ -28,9 +28,9 @@ public class servletCheckInvite extends HttpServlet {
         String login = req.getParameter("login");
         System.out.println("login: " + login);
         try {
-            int id = CheckInformation.checkWhoInvite(login);
+            int id = CheckInformation.getMeInvite(CheckInformation.nameToId(login));
 
-            if (id!=0 && CheckInformation.getIInvite(CheckInformation.nameToId(login))!=0 ){
+            if (id > 0 && CheckInformation.getIInvite(CheckInformation.nameToId(login))==-1 && CheckInformation.getMeInvite(id) == -1 ){
                 os.print(CheckInformation.idToName(id));
             } else {
                 os.print("0");
