@@ -31,10 +31,11 @@ public class servletCheckInvite extends HttpServlet {
         try {
             int id = CheckInformation.getMeInvite(CheckInformation.nameToId(login));
 
-            if (id > 0 && CheckInformation.getIInvite(CheckInformation.nameToId(login))==-1 && CheckInformation.getMeInvite(id) == -1 ){
+            if (id > 0 && CheckInformation.getIInvite(CheckInformation.nameToId(login)) == -1 && CheckInformation.getMeInvite(id) == -1 ){
                 String temp = CheckInformation.idToName(id);
+                System.out.println("  idddddddddddddddddddddddddddddddddd =  >" + id + "<");
                 os.print(temp);
-                System.out.println("  res = " + temp);
+                System.out.println("  resssssssssssssssssssssssssssssssssssssssssss = >" + temp + "<");
             } else {
                 os.print("0");
                 System.out.println("  res =  0");
