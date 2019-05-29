@@ -5,7 +5,7 @@ import java.sql.*;
 public class ConnectionMySQL {
     public static Connection getMySQLConnection() throws SQLException, ClassNotFoundException {
 
-        String hostName = "localhost";
+        String hostName = "jws-app-mysql";
 
         String dbName = "authorization";
 
