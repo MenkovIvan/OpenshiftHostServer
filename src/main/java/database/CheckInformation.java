@@ -95,8 +95,7 @@ public class CheckInformation {
     }
 
     public static int checkMeInvite(String searchLogin) throws SQLException, ClassNotFoundException {
-//проверка чтобы я до этого никого не приглашал и меня до этого никто не приглашал
-//проверка чтобы этого пользователя до этого никто не приглашал и он никого не приглашал
+
         Connection connection = ConnectionMySQL.getMySQLConnection();
 
         Statement statement = connection.createStatement();
@@ -116,7 +115,7 @@ public class CheckInformation {
 
 
     public static int checkWhoInvite(String searchLogin) throws SQLException, ClassNotFoundException {
-//проверка пригласил ли кто уже этого пользователя
+
         Connection connection = ConnectionMySQL.getMySQLConnection();
 
         Statement statement = connection.createStatement();
@@ -135,7 +134,7 @@ public class CheckInformation {
     }
 
     public static int searchWhoInvite(int id) throws SQLException, ClassNotFoundException {
-//проверка пригласил ли кто уже этого пользователя
+
         Connection connection = ConnectionMySQL.getMySQLConnection();
 
         Statement statement = connection.createStatement();
@@ -154,7 +153,7 @@ public class CheckInformation {
     }
 
     public static int getMeInvite(int id) throws SQLException, ClassNotFoundException {
-//возвращаем что у этого пользователя в ми_инвайт
+
         Connection connection = ConnectionMySQL.getMySQLConnection();
 
         Statement statement = connection.createStatement();
@@ -173,7 +172,7 @@ public class CheckInformation {
     }
 
     public static int getIInvite(int id) throws SQLException, ClassNotFoundException {
-//возвращаем что у этого пользователя в ай_инвайт
+
         Connection connection = ConnectionMySQL.getMySQLConnection();
 
         Statement statement = connection.createStatement();

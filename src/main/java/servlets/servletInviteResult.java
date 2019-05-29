@@ -34,16 +34,16 @@ public class servletInviteResult extends HttpServlet {
             int who_id = CheckInformation.searchWhoInvite(CheckInformation.nameToId(login));
 
             if (result.equals("yes")){
-                //кому изначально пришло приглашение
+
                 UpdateInformation.updateI_Invite(login, 0 );
-                //кто изначлаьно отправлял приглашение
+
                 UpdateInformation.updateMe_Invite(0,CheckInformation.idToName(who_id));
             } else if (result.equals("no")){
 
-                //кому изначально пришло приглашение
+
                 UpdateInformation.updateMe_Invite(-1, login);
                 UpdateInformation.updateI_Invite(login, -1);
-                //кто изначлаьно отправлял приглашение
+
                 UpdateInformation.updateMe_Invite(-1, CheckInformation.idToName(who_id));
                 UpdateInformation.updateI_Invite(CheckInformation.idToName(who_id), -1);
 
