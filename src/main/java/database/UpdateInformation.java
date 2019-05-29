@@ -44,4 +44,18 @@ public class UpdateInformation {
         System.out.println("Row Count affected = " + rowCount);
 
     }
+
+    public static void updatePlay(String login, int play) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET play=" + play + " WHERE login=" + login;
+
+        int rowCount = statement.executeUpdate(sql);
+
+        System.out.println("Row Count affected = " + rowCount);
+
+    }
 }

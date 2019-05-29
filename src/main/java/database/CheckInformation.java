@@ -190,6 +190,25 @@ public class CheckInformation {
         } else return -2;
     }
 
+    public static int getPlay(int id) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "SELECT play FROM player WHERE id=" + id;
+
+        ResultSet rs = statement.executeQuery(sql);
+
+        if (rs.next()) {
+
+            System.out.println("Result set = " + rs.getInt("play"));
+
+            return rs.getInt("play");
+
+        } else return -2;
+    }
+
 }
 
 

@@ -33,9 +33,8 @@ public class servletExit extends HttpServlet {
             UpdateInformation.updateOnline(CheckInformation.nameToId(login),0);
             UpdateInformation.updateI_Invite(login,-1);
             UpdateInformation.updateMe_Invite(-1,login);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            UpdateInformation.updatePlay(login,0);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         os.print("0");

@@ -1,6 +1,6 @@
 package servlets;
 
-import database.CheckInformation;
+import database.UpdateInformation;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/api/checkinviteresult")
-public class servletCheckInviteResult extends HttpServlet {
+@WebServlet("/api/play")
+public class servletPlay extends HttpServlet {
     public void init(ServletConfig servletConfig) {
         try {
             super.init(servletConfig);
@@ -25,26 +25,15 @@ public class servletCheckInviteResult extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
-        int id = Integer.parseInt(req.getParameter("id"));
-        System.out.println("id: " + id);
+        String login = req.getParameter("login");
+        System.out.println("login: " + login);
 
         try {
-
-            if(CheckInformation.getMeInvite(id) == -1 && CheckInformation.getIInvite(id) >0) {
-                os.print("-1");
-            }
-
-            else if (CheckInformation.getMeInvite(id) == 0 && CheckInformation.getIInvite(id) > 0){
-                os.print(CheckInformation.idToName(CheckInformation.getIInvite(id)));
-            }
-
-            else if (CheckInformation.getMeInvite(id) == -1 && CheckInformation.getIInvite(id) == -1) {
-                os.print("0");
-            } else os.print("-2");
-
+            UpdateInformation.updatePlay(login, 1);
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
+
+        os.print("0");
     }
 }
-
