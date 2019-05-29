@@ -25,7 +25,7 @@ public class servletInviteResult extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
-        String login = req.getParameter("login"); //я
+        String login = req.getParameter("login");
         System.out.println("login: " + login);
         String result = req.getParameter("result");
         System.out.println("result: " + result);
