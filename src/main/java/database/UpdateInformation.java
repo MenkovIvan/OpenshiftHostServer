@@ -58,4 +58,116 @@ public class UpdateInformation {
         //System.out.println("updatePlay = " + rowCount + " from " + login);
 
     }
+
+    public static void updateTrs(String login, String trs) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET trs='" + trs + "' WHERE login='" + login + "'";
+
+        int rowCount = statement.executeUpdate(sql);
+
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
+
+    }
+
+    public static void updateDoors(String login, String doors) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET doors='" + doors + "' WHERE login='" + login + "'";
+
+        int rowCount = statement.executeUpdate(sql);
+
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
+
+    }
+
+    public static void updateLvl(String login, int lvl) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET lvl=" + lvl + " WHERE login='" + login + "'";
+
+        int rowCount = statement.executeUpdate(sql);
+
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
+
+    }
+
+    public static void updatePower(String login, int power) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET power=" + power + " WHERE login='" + login + "'";
+
+        int rowCount = statement.executeUpdate(sql);
+
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
+
+    }
+
+    public static void updateEndTurn(String login, int endturn) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET endturn=" + endturn + " WHERE login='" + login + "'";
+
+        int rowCount = statement.executeUpdate(sql);
+
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
+
+    }
+
+    public static void updateNumber(String login, int number) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET number=" + number +" WHERE login='" + login + "'";
+
+        int rowCount = statement.executeUpdate(sql);
+
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
+
+    }
+
+    public static void updateNDoors(String login, int ndoors) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET ndoors=" + ndoors +" WHERE login='" + login + "'";
+
+        int rowCount = statement.executeUpdate(sql);
+
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
+
+    }
+
+    public static void updateNTrs(String login, int ntrs) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionMySQL.getMySQLConnection();
+
+        Statement statement = connection.createStatement();
+
+        String sql = "UPDATE player SET ntrs=" + ntrs +" WHERE login='" + login + "'";
+
+        int rowCount = statement.executeUpdate(sql);
+
+        //System.out.println("updatePlay = " + rowCount + " from " + login);
+
+    }
 }

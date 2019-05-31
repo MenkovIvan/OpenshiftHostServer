@@ -1,6 +1,8 @@
-package servlets;
+package servlets.mainMenu;
 
 import database.CheckInformation;
+import database.GetInformation;
+import database.UpdateInformation;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -10,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet("/api/checkplay")
 public class servletCheckPlay extends HttpServlet {
@@ -31,20 +32,24 @@ public class servletCheckPlay extends HttpServlet {
         //esli u igroka me_invite == 0 togda uznaem s kem igraem i check play u oboix
 
         try {
-            if(CheckInformation.getPlay(CheckInformation.nameToId(login)) == 0) {
+            if(GetInformation.getPlay(CheckInformation.nameToId(login)) == 0) {
                 os.print("0");
             }
             else
-            if (CheckInformation.getMeInvite(CheckInformation.nameToId(login)) == 0){
-                int id = CheckInformation.getIInvite(CheckInformation.nameToId(login));
-                if (CheckInformation.getPlay(id) == 1){
+            if (GetInformation.getMeInvite(CheckInformation.nameToId(login)) == 0){
+                int id = GetInformation.getIInvite(CheckInformation.nameToId(login));
+                if (GetInformation.getPlay(id) == 1){
+                    UpdateInformation.updateEndTurn(login,1);
+                    UpdateInformation.updateNumber(login,1);
                     os.print("1");
                 }
                 else os.print("0");
             }
-            else if (CheckInformation.getIInvite(CheckInformation.nameToId(login)) == 0){
-                int id = CheckInformation.getMeInvite(CheckInformation.nameToId(login));
-                if (CheckInformation.getPlay(id) == 1){
+            else if (GetInformation.getIInvite(CheckInformation.nameToId(login)) == 0){
+                int id = GetInformation.getMeInvite(CheckInformation.nameToId(login));
+                if (GetInformation.getPlay(id) == 1){
+                    UpdateInformation.updateEndTurn(login,0);
+                    UpdateInformation.updateNumber(login,2);
                     os.print("1");
                 }
                 else os.print("0");

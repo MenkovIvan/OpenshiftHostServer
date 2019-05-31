@@ -1,6 +1,7 @@
-package servlets;
+package servlets.start;
 
 import database.CheckInformation;
+import database.GetInformation;
 import database.UpdateInformation;
 
 import javax.servlet.ServletConfig;
@@ -33,22 +34,27 @@ public class servletEntry extends HttpServlet {
             int id = 0;
             try {
                 id = CheckInformation.checkPlayer(login, password);
-            } catch (Exception e) {
-                e.printStackTrace();
+                int online = GetInformation.getOnline(CheckInformation.nameToId(login));
+
+            if (id < 0){
+                System.out.println("Not found player. Try again");
+                os.print("-1");
             }
-            if (id<0){
-                System.out.println("Not found player.Player. Try again");
+            else {
+                if (online == 1) {
+                    System.out.println("This player is online");
+                    os.print("0");
+                } else {
+                    System.out.println("player id: " + id);
+                    UpdateInformation.updateOnline(id, 1);
+                    os.print(id);
+                }
             }
-            else{
-                System.out.println("player id: "+id);
-            }
-            try {
-                UpdateInformation.updateOnline(id, 1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             //resp.setContentType(String.valueOf(id));
-            os.print(id);
+
         }
 
 

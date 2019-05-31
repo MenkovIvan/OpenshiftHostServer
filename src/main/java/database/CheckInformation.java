@@ -54,26 +54,6 @@ public class CheckInformation {
 
     }
 
-    public static boolean checkOnline(String searchLogin) throws SQLException, ClassNotFoundException {
-
-        Connection connection = ConnectionMySQL.getMySQLConnection();
-
-        Statement statement = connection.createStatement();
-
-        String sql = "SELECT id FROM player WHERE login = '" + searchLogin + "' AND online=1";
-
-        ResultSet rs = statement.executeQuery(sql);
-
-        if (rs.next()) {
-
-            //System.out.println("Check online = " + rs.getInt("id") + " return true");
-
-            return true;
-
-        } else return false;
-
-    }
-
     public static int checkPlayer(String searchLogin, String searchPassword) throws SQLException, ClassNotFoundException {
 
         Connection connection = ConnectionMySQL.getMySQLConnection();
@@ -131,63 +111,6 @@ public class CheckInformation {
             return rs.getInt("id");
 
         } else return 0;
-    }
-
-    public static int getMeInvite(int id) throws SQLException, ClassNotFoundException {
-
-        Connection connection = ConnectionMySQL.getMySQLConnection();
-
-        Statement statement = connection.createStatement();
-
-        String sql = "SELECT me_invite FROM player WHERE id=" + id;
-
-        ResultSet rs = statement.executeQuery(sql);
-
-        if (rs.next()) {
-
-            //System.out.println("getMeInvite = " + rs.getInt("me_invite"));
-
-            return rs.getInt("me_invite");
-
-        } else return -2;
-    }
-
-    public static int getIInvite(int id) throws SQLException, ClassNotFoundException {
-
-        Connection connection = ConnectionMySQL.getMySQLConnection();
-
-        Statement statement = connection.createStatement();
-
-        String sql = "SELECT i_invite FROM player WHERE id=" + id;
-
-        ResultSet rs = statement.executeQuery(sql);
-
-        if (rs.next()) {
-
-            //System.out.println("getIInvite = " + rs.getInt("i_invite"));
-
-            return rs.getInt("i_invite");
-
-        } else return -2;
-    }
-
-    public static int getPlay(int id) throws SQLException, ClassNotFoundException {
-
-        Connection connection = ConnectionMySQL.getMySQLConnection();
-
-        Statement statement = connection.createStatement();
-
-        String sql = "SELECT play FROM player WHERE id=" + id;
-
-        ResultSet rs = statement.executeQuery(sql);
-
-        if (rs.next()) {
-
-            //System.out.println("getPlay = " + rs.getInt("play"));
-
-            return rs.getInt("play");
-
-        } else return -2;
     }
 
 }

@@ -1,4 +1,4 @@
-package servlets;
+package servlets.start;
 
 import database.AddPlayer;
 import database.CheckInformation;

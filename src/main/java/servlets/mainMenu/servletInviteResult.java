@@ -1,4 +1,4 @@
-package servlets;
+package servlets.mainMenu;
 
 import database.CheckInformation;
 import database.UpdateInformation;

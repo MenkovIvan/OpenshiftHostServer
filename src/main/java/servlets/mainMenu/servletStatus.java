@@ -1,6 +1,7 @@
-package servlets;
+package servlets.mainMenu;
 
 import database.CheckInformation;
+import database.GetInformation;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -41,7 +42,7 @@ public class servletStatus extends HttpServlet {
         else{
             System.out.println("player id: "+id);
             try {
-                if (CheckInformation.checkOnline(login)) {
+                if (GetInformation.getOnline(CheckInformation.nameToId(login)) == 1) {
                     os.print(1);
                     System.out.println("Player " + login + " is online");
                 }

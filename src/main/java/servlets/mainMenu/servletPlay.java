@@ -1,6 +1,5 @@
-package servlets;
+package servlets.mainMenu;
 
-import database.CheckInformation;
 import database.UpdateInformation;
 
 import javax.servlet.ServletConfig;
@@ -13,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/api/exit")
-public class servletExit extends HttpServlet {
+@WebServlet("/api/play")
+public class servletPlay extends HttpServlet {
     public void init(ServletConfig servletConfig) {
         try {
             super.init(servletConfig);
@@ -27,16 +26,14 @@ public class servletExit extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
         String login = req.getParameter("login");
-        System.out.println("login: " + login);
+        System.out.println("play - login: " + login);
 
         try {
-            UpdateInformation.updateOnline(CheckInformation.nameToId(login),0);
-            UpdateInformation.updateI_Invite(login,-1);
-            UpdateInformation.updateMe_Invite(-1,login);
-            UpdateInformation.updatePlay(login,0);
+            UpdateInformation.updatePlay(login, 1);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         os.print("0");
     }
 }
