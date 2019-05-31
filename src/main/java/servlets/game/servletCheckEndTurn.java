@@ -26,7 +26,7 @@ public class servletCheckEndTurn  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream os = resp.getOutputStream();
-
+        //System.out.println("servletCheckEndTurn - start1");
         String login = req.getParameter("login");
 
         String whoPlay = req.getParameter("whoplay");
@@ -34,17 +34,18 @@ public class servletCheckEndTurn  extends HttpServlet {
 
 
         try {
-            if (GetInformation.getEndTurn(CheckInformation.nameToId(login)) == 1 && GetInformation.getEndTurn(CheckInformation.nameToId(whoPlay)) == 0){
+            //if (GetInformation.getEndTurn(CheckInformation.nameToId(login)) == 1 && GetInformation.getEndTurn(CheckInformation.nameToId(whoPlay)) == 0){
+                System.out.println("servletCheckEndTurn - start2");
                 String trs = GetInformation.getTrs(CheckInformation.nameToId(whoPlay));
                 String doors = GetInformation.getDoors(CheckInformation.nameToId(whoPlay));
                 String power = String.valueOf(GetInformation.getPower(CheckInformation.nameToId(whoPlay)));
                 String lvl = String.valueOf(GetInformation.getLvl(CheckInformation.nameToId(whoPlay)));
                 //String ntrs = String.valueOf(GetInformation.getNTrs(CheckInformation.nameToId(whoPlay)));
                 //String ndoors = String.valueOf(GetInformation.getNDoors(CheckInformation.nameToId(whoPlay)));
-                if (!doors.equals("-1") && !trs.equals("-1") && !power.equals("-1") && !lvl.equals("-1")){
+                //if (!doors.equals("-1") && !trs.equals("-1") && !power.equals("-1") && !lvl.equals("-1")){
                     System.out.println("servletCheckEndTurn - start");
-                    //System.out.println("  trs: " + trs);
-                    //System.out.println("  doors" + doors);
+                    System.out.println("  trs: " + trs);
+                    System.out.println("  doors" + doors);
                     System.out.println("  lvl: " + lvl);
                     System.out.println("  power: " + power);
                     //System.out.println("  ntrs: " + ntrs);
@@ -53,10 +54,10 @@ public class servletCheckEndTurn  extends HttpServlet {
                     System.out.println("servletCheckEndTurn - end");
                     //UpdateInformation.updateEndTurn(whoPlay,0);
                     UpdateInformation.updateNumber(login,-1);
-                }
-                else os.print("-1");
-            }
-            else os.print("-1");
+                //}
+                //else os.print("-1");
+            //}
+            //else os.print("-1");
         } catch (Exception e) {
             e.printStackTrace();
         }
